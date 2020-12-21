@@ -17,6 +17,9 @@ let currentCanvas;
 let pixelArray = null;
 let url;
 let previous;
+let dir = "down";
+let w;
+let ht;
 //****************************************
 
 // I don't need to use setup, but P5JS will throw a fit if it doesn't exist.
@@ -69,20 +72,24 @@ async function load(){
   await loadImage(url, img => {
     
     background(255);
-    if (url != previous){
-      currentCanvas = createCanvas((Math.floor(img.width / 10) * 10), (Math.floor(img.height / 10) * 10));
-      image(img, 0, 0, (Math.floor(img.width / 10) * 10), (Math.floor(img.height / 10) * 10));
-      loadPixels();
-      pixelArray = pixelsToObjectArray(pixels);
-    }
+
+    setDir();
+    w = img.width;
+    h = img.height;
+    currentCanvas = createCanvas((Math.floor(w / 10) * 10), (Math.floor(h / 10) * 10));
+    image(img, 0, 0, (Math.floor(w / 10) * 10), (Math.floor(h / 10) * 10));
+    loadPixels();
+    pixelArray = pixelsToObjectArray(pixels, dir);
+    
     getData();
+
     if (canvasToggle){
       currentCanvas = createCanvas(windowWidth, windowWidth);
     } else {
       currentCanvas = createCanvas(windowWidth, windowHeight);
       image(img,0,0,windowWidth,windowHeight);
     }
-    console.log("W: " + windowWidth + " H: " + windowHeight);
+
     previous = url;
     reset();
   });
@@ -99,7 +106,6 @@ function draw() {
         // Draw an ellipse at x,y
         noStroke()
         fill(currPixel.r, currPixel.g, currPixel.b);
-        console.log(currPixel.r);
         // Adjust for center of window and increase size as radius increases
         ellipse((x+width/2), (y+height/2), 3 + r/rDiv, 3 + r/rDiv); 
         // Each ellipse is one ten-thousandth (or whatever pixelRate is) of the input image
@@ -112,16 +118,55 @@ function draw() {
     }
 }
 
-function pixelsToObjectArray(pixels){
+function pixelsToObjectArray(pixels, direction){
   let pixelObjectArray = [];
   index = 0;
-  for (i = 0; i < pixels.length; i += 4){
-    pixelObjectArray[index++] = {
-     'r' : pixels[i],
-     'g' : pixels[i + 1],
-     'b' : pixels[i + 2]
-    };
+  console.log(direction);
+  console.log("W: " + w + " H: " + h);
+  if (direction == "left"){
+    for (i = 0; i < w; i++){
+      for (j = 0; j < h; j++){
+        k = (j*w*4) + (i*4);
+        pixelObjectArray[index++] = {
+          'r' : pixels[k],
+          'g' : pixels[k + 1],
+          'b' : pixels[k + 2]
+        };
+      }
+    }
+  } 
+  else if (direction == "right"){
+    for (i = w; i > 0; i--){
+      for (j = h; j > 0; j--){
+        k = (j*w*4) + (i*4);
+        pixelObjectArray[index++] = {
+          'r' : pixels[k],
+          'g' : pixels[k + 1],
+          'b' : pixels[k + 2]
+        };
+      }
+    }
   }
+  else if (direction == "up"){
+    for (i = pixels.length - 4; i > 0; i -= 4){
+      pixelObjectArray[index++] = {
+        'r' : pixels[i],
+        'g' : pixels[i + 1],
+        'b' : pixels[i + 2]
+      };
+    }
+  }
+  else {
+    for (i = 0; i < pixels.length; i += 4){
+      pixelObjectArray[index++] = {
+        'r' : pixels[i],
+        'g' : pixels[i + 1],
+        'b' : pixels[i + 2]
+      };
+    }
+  } 
+  console.log("Len: " + pixelObjectArray.length);
+  console.log(pixelObjectArray);
   return pixelObjectArray;
 }
 
@@ -141,13 +186,18 @@ function saveSpiral() {
   save(fileName + ".jpg");
 }
 
+function setDir(){
+  dirElement = document.getElementById("direction");
+  dir = dirElement.elements[0].value;
+}
+
 function getData(){
   rDivElement      = document.getElementById("radiusDiv"); // Default 10
   angleElement     = document.getElementById("angle"); // Default 0.1
   radiusElement    = document.getElementById("radius"); // Default 0.06
   pixelRateElement = document.getElementById("pixelRate");  // Default 20000
   speedElement     = document.getElementById("speed");
-
+ 
   rDiv      = Number(rDivElement.elements[0].value);
   angle     = Number(angleElement.elements[0].value);
   radius    = Number(radiusElement.elements[0].value);

@@ -35,7 +35,7 @@
     <form class= "ui form" id="url">
       <div class = "field" style="position:absolute;left:30px;top:100px; width:260px;">
         <div class="ui labeled input" >
-            <div class="ui label tooltip" style= "width: 60px;">
+            <div class="ui label tooltip" style= "width: 85px;">
               <div class="activate">URL</div>
               <span class="tooltiptext">Only <i>direct</i> image links work.
                Unsplash is a great resource for pretty images.</span>              
@@ -49,7 +49,7 @@
     <form class= "ui form" id="radiusDiv">
       <div class = "field" style="position:absolute;left:30px;top:150px; width:260px;">
         <div class="ui labeled input" >
-          <div class="ui label tooltip" style= "width: 60px;">
+          <div class="ui label tooltip" style= "width: 85px;">
             <div class="activate">rDiv</div>
             <span class="tooltiptext">Rate of change in the size. The higher the number, the less they grow.</span> 
           </div>
@@ -62,7 +62,7 @@
     <form class= "ui form" id="angle">
       <div class = "field" style="position:absolute;left:30px;top:200px; width:260px;">
         <div class="ui labeled input" >
-          <div class="ui label tooltip" style= "width: 60px;">
+          <div class="ui label tooltip" style= "width: 85px;">
             <div class="activate">Angle</div>
             <span class="tooltiptext">Changes the angle of the spiral. The lower the number, the tighter the spiral.</span>
           </div>
@@ -75,8 +75,8 @@
     <form class= "ui form" id="pixelRate">
       <div class = "field" style="position:absolute;left:30px;top:250px; width:260px;">
         <div class="ui labeled input" >
-          <div class="ui label tooltip" style= "width: 60px;">
-            <div class="activate">Res</div>
+          <div class="ui label tooltip" style= "width: 85px;">
+            <div class="activate">Resolution</div>
             <span class="tooltiptext">Quantity of circles the image is divided into. <i>Capped at number of pixels in photo.</i></span>
           </div>
           <input type="text" placeholder="Default = 20000" value = "20000">
@@ -88,7 +88,7 @@
     <form class= "ui form" id="radius">
       <div class = "field" style="position:absolute;left:30px;top:300px; width:260px;">
         <div class="ui labeled input" >
-          <div class="ui label tooltip" style= "width: 60px;">
+          <div class="ui label tooltip" style= "width: 85px;">
             <div class="activate">Radius</div>
             <span class="tooltiptext">Changes how quickly the spiral expands. The higher the number, the quicker.</span>
           </div>
@@ -101,7 +101,7 @@
     <form class= "ui form" id="speed">
       <div class = "field" style="position:absolute;left:30px;top:350px; width:260px;">
         <div class="ui labeled input" >
-          <div class="ui label tooltip" style= "width: 60px;">
+          <div class="ui label tooltip" style= "width: 85px;">
             <div class="activate">Speed</div>
             <span class="tooltiptext">Changes how many circles are created within each frame</span>
           </div>
@@ -111,15 +111,33 @@
       </div>
     </form>
 
-    <button class="ui centered large teal button" style="position:absolute;left:30px;top:400px; width: 260px;" onclick="toggleAspect()">
+    <form class= "ui form" id="direction">
+      <div class = "field" style="position:absolute;left:30px;top:400px; width:260px;">
+        <div class="ui labeled input" >
+          <div class="ui label tooltip" style= "width: 85px;">
+            <div class="activate">Direction</div>
+            <span class="tooltiptext">Changes how many circles are created within each frame</span>
+          </div>
+          <select class="ui dropdown">
+            <option value="down">Top down</option>
+            <option value="up">Bottom up</option>  
+            <option value="left">Left to right</option>  
+            <option value="right">Right to left</option>  
+          </select>
+        </div>
+        
+      </div>
+    </form>
+
+    <button class="ui centered large teal button" style="position:absolute;left:30px;top:450px; width: 260px;" onclick="toggleAspect()">
       Toggle aspect ratio.
     </button>
 
-    <button class="ui centered large blue button" style="position:absolute;left:30px;top:450px; width: 115px;" onclick="load()">
+    <button class="ui centered large blue button" style="position:absolute;left:30px;top:500px; width: 115px;" onclick="load()">
       Spiralize
     </button>
 
-    <button class="ui centered large green button" style="position:absolute;left:175px;top:450px; width: 115px;" onclick="saveSpiral()">
+    <button class="ui centered large green button" style="position:absolute;left:175px;top:500px; width: 115px;" onclick="saveSpiral()">
       Save
     </button>
     
