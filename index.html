@@ -51,9 +51,9 @@
         <div class="ui labeled input" >
           <div class="ui label tooltip" style= "width: 85px;">
             <div class="activate">rDiv</div>
-            <span class="tooltiptext">Rate of change in the size. The higher the number, the less they grow.</span> 
+            <span class="tooltiptext">Rate of change in the shape size. The higher the number, the less they grow.</span> 
           </div>
-          <input type="text" placeholder="Default = 10" value = "10">
+          <input type="number" placeholder="Default = 10" value = "10" step="0.5">
          </div>
         </div>
       </div>
@@ -64,9 +64,9 @@
         <div class="ui labeled input" >
           <div class="ui label tooltip" style= "width: 85px;">
             <div class="activate">Angle</div>
-            <span class="tooltiptext">Changes the angle of the spiral. The lower the number, the tighter the spiral.</span>
+            <span class="tooltiptext">The difference in angle (in degrees) between each step</span>
           </div>
-          <input type="text" placeholder="Default = 0.1" value = "0.1">
+          <input type="number" placeholder="Default = 3" value = "3" step="1">
          </div>
         </div>
       </div>
@@ -77,9 +77,9 @@
         <div class="ui labeled input" >
           <div class="ui label tooltip" style= "width: 85px;">
             <div class="activate">Resolution</div>
-            <span class="tooltiptext">Quantity of circles the image is divided into. <i>Capped at number of pixels in photo.</i></span>
+            <span class="tooltiptext">Quantity of shapes the image is divided into. <i>Capped at number of pixels in photo.</i></span>
           </div>
-          <input type="text" placeholder="Default = 20000" value = "20000">
+          <input type="number" placeholder="Default = 20000" value = "20000" step="1000">
          </div>
         </div>
       </div>
@@ -92,7 +92,7 @@
             <div class="activate">Radius</div>
             <span class="tooltiptext">Changes how quickly the spiral expands. The higher the number, the quicker.</span>
           </div>
-         <input type="text" placeholder="Default = 0.06" value = "0.06">
+         <input type="number" placeholder="Default = 0.06" value = "0.06" step="0.01">
          </div>
         </div>
       </div>
@@ -103,9 +103,9 @@
         <div class="ui labeled input" >
           <div class="ui label tooltip" style= "width: 85px;">
             <div class="activate">Speed</div>
-            <span class="tooltiptext">Changes how many circles are created within each frame</span>
+            <span class="tooltiptext">Changes how many shapes are created within each frame</span>
           </div>
-         <input type="text" placeholder="Default = 64" value = "64">
+         <input type="number" placeholder="Default = 100" value = "100" step="100">
          </div>
         </div>
       </div>
@@ -125,19 +125,47 @@
             <option value="right">Right to left</option>  
           </select>
         </div>
-        
       </div>
     </form>
 
-    <button class="ui centered large teal button" style="position:absolute;left:30px;top:450px; width: 260px;" onclick="toggleAspect()">
+    <form class= "ui form" id="shape">
+      <div class = "field" style="position:absolute;left:30px;top:450px; width:260px;">
+        <div class="ui labeled input" >
+          <div class="ui label tooltip" style= "width: 85px;">
+            <div class="activate">Shape</div>
+            <span class="tooltiptext">Changes the shape that is drawn each iteration</span>
+          </div>
+          <select class="ui dropdown">
+            <option value="circle">Circle</option>
+            <option value="square">Square</option>  
+            <option value="triangle">Triangle</option>  
+          </select>
+        </div>
+      </div>
+    </form>
+
+    <form class= "ui form" id="rotation">
+      <div class = "field" style="position:absolute;left:30px;top:500px; width:260px;">
+        <div class="ui labeled input" >
+          <div class="ui label tooltip" style= "width: 85px;">
+            <div class="activate">Rotation</div>
+            <span class="tooltiptext">The amount of rotation of the shape each iteration</span>
+          </div>
+         <input type="number" placeholder="Default = 0" value = "0" step = "0.001">
+         </div>
+        </div>
+      </div>
+    </form>
+
+    <button class="ui centered large teal button" style="position:absolute;left:30px;top:550px; width: 260px;" onclick="toggleAspect()">
       Toggle aspect ratio.
     </button>
 
-    <button class="ui centered large blue button" style="position:absolute;left:30px;top:500px; width: 115px;" onclick="load()">
+    <button class="ui centered large blue button" style="position:absolute;left:30px;top:600px; width: 115px;" onclick="load()">
       Spiralize
     </button>
 
-    <button class="ui centered large green button" style="position:absolute;left:175px;top:500px; width: 115px;" onclick="saveSpiral()">
+    <button class="ui centered large green button" style="position:absolute;left:175px;top:600px; width: 115px;" onclick="saveSpiral()">
       Save
     </button>
     
