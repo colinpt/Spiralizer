@@ -36,42 +36,41 @@ function setup() {
 async function load(){
     // Grab url and value from dropdown
     urlElement       = document.getElementById("url");
-    selectionElement = document.getElementById("selection");
-    selection = Number(selectionElement.elements[0].value)
+    selection = document.getElementById("selection").elements[0].value;
     // Load image based on dropdown value
     switch (selection){
-    case 0:
+    case "custom":
       url = "https://cors-anywhere.herokuapp.com/" + urlElement.elements[0].value;
       break;
-    case 1:
-      url = "https://i.imgur.com/v3L86qJ.jpg";
+    case "aurora":
+      url = "https://i.imgur.com/wGAsX2j.jpg";
       break;
-    case 2:
-      url = "https://i.imgur.com/36LRbi9.jpg";
+    case "snowcap":
+      url = "https://i.imgur.com/OyoFdzI.jpg";
       break;
-    case 3:
-      url = "https://i.imgur.com/Nom8p3a.jpg";
+    case "hotspring":
+      url = "https://i.imgur.com/lIUTGHk.jpg";
       break;
-    case 4:
-      url = "https://i.imgur.com/jQGo8AA.jpg";
+    case "paintjob":
+      url = "https://i.imgur.com/aYy8IFf.jpg";
       break;
-    case 5:
-      url = "https://i.imgur.com/0en6UV9.jpg";
+    case "fireworks":
+      url = "https://i.imgur.com/TkNhwWy.jpg";
       break;
-    case 6:
-      url = "https://i.imgur.com/wy7dwsq.jpg";
+    case "japan":
+      url = "https://i.imgur.com/cow2bsg.jpg";
       break;
-    case 7:
-      url = "https://i.imgur.com/hXyN3lZ.jpg";
+    case "sculpture":
+      url = "https://i.imgur.com/S6nrwuP.jpg";
       break;
-    case 8:
-      url = "https://i.imgur.com/Iwn44sv.jpg";
+    case "field":
+      url = "https://i.imgur.com/SUiP2gJ.jpg";
       break;
-    case 9:
-      url = "https://i.imgur.com/vrSOj4I.jpg";
+    case "tiedye":
+      url = "https://i.imgur.com/aCcIW8Q.jpg";
       break; 
-    case 10:
-      url = "https://i.imgur.com/whcht9S.jpg";
+    case "bee":
+      url = "https://i.imgur.com/NR6C9JW.jpg";
       break;
     default:
       url = "https://i.imgur.com/GfJdbHr.jpg";
