@@ -17,19 +17,27 @@
     <script src="sketch.js"></script>
 
     <form class= "ui form" id="selection">
-      <select class="ui dropdown" style="position:absolute;left:30px;top:50px; width:260px;">
-        <option value="custom">Custom URL</option>
-        <option value="aurora">Aurora</option>  
-        <option value="snowcap">Snowcap</option>  
-        <option value="hotspring">Hot Spring</option>  
-        <option value="paintjob">Paint Job</option>  
-        <option value="fireworks">Fireworks</option>  
-        <option value="japan">Japan</option>  
-        <option value="sculpture">Sculpture</option>  
-        <option value="field">Field</option>  
-        <option value="tiedye">Tie Dye</option>  
-        <option value="bee">Bee</option>  
-      </select>
+      <div class = "field" style="position:absolute;left:30px;top:50px; width:260px;">
+        <div class="ui labeled input" >
+          <div class="ui label tooltip" style= "width: 85px;">
+            <div class="activate">Image</div>
+            <span class="tooltiptext">The image that is being spiralized</span>
+          </div>
+          <select class="ui dropdown" >
+            <option value="custom">Custom URL</option>
+            <option value="aurora">Aurora</option>  
+            <option value="snowcap">Snowcap</option>  
+            <option value="hotspring">Hot Spring</option>  
+            <option value="paintjob">Paint Job</option>  
+            <option value="fireworks">Fireworks</option>  
+            <option value="japan">Japan</option>  
+            <option value="sculpture">Sculpture</option>  
+            <option value="field">Field</option>  
+            <option value="tiedye">Tie Dye</option>  
+            <option value="bee">Bee</option>  
+          </select>
+        </div>
+      </div>
     </form>
 
     <form class= "ui form" id="url">
