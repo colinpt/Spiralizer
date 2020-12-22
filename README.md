@@ -1,6 +1,5 @@
 ﻿# [p5.js Spiralizer](https://spiralizer.netlify.app/)
-[https://spiralizer.netlify.app/](https://spiralizer.netlify.app/)
-A small web-app built with [p5.js](https://p5js.org/) that turns any image into a beautiful spiral.
+[https://spiralizer.netlify.app/](https://spiralizer.netlify.app/) is a small web-app built with [p5.js](https://p5js.org/) that turns any image into a beautiful spiral.
 ## Instructions
 
 To get started, simply choose an image from the 'Image' dropdown, or add your own direct image link into the 'URL' field and select 'Custom URL' from the 'Image' dropdown. Once you've made a selection, hit 'spiralize' to begin. 
